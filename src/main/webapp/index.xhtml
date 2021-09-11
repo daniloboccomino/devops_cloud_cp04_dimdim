@@ -10,62 +10,41 @@
 		<ui:define name="content">
 			<div class="card product">
 			    <h:form id="form">
-			        <p:dataView var="bankSlip" value="#{bankSlipBean.bankSlips}" rows="12" paginator="true"
-			                    rowsPerPageTemplate="6,12,16"
-			                    paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-			                    gridIcon="pi pi-th-large" listIcon="pi pi-bars">
-			
-			            <p:dataViewGridItem>
-			                <div class="product-grid-item card border-1">
-			                    <div class="product-grid-item-top">
-			                        <div>
-			                            <i class="pi pi-tag product-category-icon"/>
-			                            <span class="product-category">#{product.category}</span>
-			                        </div>
-			                        <span class="product-badge status-#{product.inventoryStatus.name().toLowerCase()}">#{product.inventoryStatus.text}</span>
-			                    </div>
-			                    <div class="product-grid-item-content">
-			                        <p:graphicImage name="images/product/#{product.image}" library="demo"/>
-			                        <div class="product-name">#{product.name}</div>
-			                        <div class="product-description">#{product.description}</div>
-			                        <p:rating readonly="true" value="#{product.rating}"/>
-			                    </div>
-			                    <div class="product-grid-item-bottom">
-			                        <h:outputText value="#{product.price}" styleClass="product-price">
-			                            <f:convertNumber currencySymbol="$" type="currency"/>
-			                        </h:outputText>
-			                        <p:commandButton type="button"
-			                                            value="Add To Cart"
-			                                            icon="pi pi-shopping-cart"
-			                                            disabled="#{product.inventoryStatus == 'OUTOFSTOCK'}">
-			                        </p:commandButton>
-			                    </div>
-			                </div>
-			            </p:dataViewGridItem>
+			        <p:dataView var="bankSlip" value="#{bankSlipBean.bankSlips}" listIcon="pi pi-bars">
 			
 			            <p:dataViewListItem>
-			                <div class="setup-list-item">
-			                    <p:graphicImage name="image_setup.jpg" library="images"/>
-			                    <div class="setup-list-detail">
-			                        <div class="setup-name">#{setup.name}</div>
-			                        <div class="setup-description">#{setup.description}</div>
-			                        <p:rating value="0"/>
+			                <div class="bankSlip-list-item">
+			                    <p:graphicImage name="bank_slip.png" library="img" />
+			                    <div class="bankSlip-list-detail">
+			                        <div>
+			                        	<span class="info-title">Barcode:</span>#{bankSlip.code}
+			                        </div>
+			                        <div>
+			                        	<span class="info-title">Due Date:</span>#{bankSlip.dueDate}
+			                        </div>
+			                        <div>
+			                        	<span class="info-title">Price:</span>
+			                        	<h:outputText value="#{bankSlip.price}" styleClass="product-price">
+				                            <f:convertNumber currencySymbol="$" type="currency"/>
+				                        </h:outputText>
+			                        </div>
 			                    </div>
-			                    <div class="setup-list-action">
-			                        <h:outputText value="#{setup.price}" styleClass="setup-price">
-			                            <f:convertNumber currencySymbol="R$" type="currency"/>
-			                        </h:outputText>
-			                        <p:commandButton type="button"
-			                                         value="Detail"
-			                                         icon="pi pi-search"
-			                                         >
-			                        </p:commandButton>
+			                    <div class="bankSlip-list-action">
+			                        <p:commandButton value="Pay now" type="button" icon="pi pi-dollar" onclick="PF('dlg2').show()"/>
 			                    </div>
 			                </div>
 			            </p:dataViewListItem>
 			        </p:dataView>
 			    </h:form>
 			</div>
+			
+			<p:dialog header="Payment" widgetVar="dlg2" minHeight="40" width="350" showEffect="fade" modal="true">
+			    <div>
+				    <i class="pi pi-check-circle"/>
+				    <span class="product-category">Payment success.</span>
+				</div>
+			</p:dialog>
+			
 		</ui:define>
 	</ui:composition>
 
