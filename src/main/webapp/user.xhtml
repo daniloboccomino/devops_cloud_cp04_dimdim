@@ -27,21 +27,6 @@
 					</div>
 
 					<div class="p-field p-grid">
-						<label for="birthday" class="p-col-fixed" style="width: 100px">Birthday</label>
-						<div class="p-col">
-							<p:calendar 
-								id="birthday" 
-								value="#{userBean.user.birthday}" 
-								required="true"
-								showOn="button"
-								mask="dd/MM/yyyy"
-							>
-								<f:ajax event="blur" render="messages"  />
-							</p:calendar>
-						</div>
-					</div>
-					
-					<div class="p-field p-grid">
 						<label for="email" class="p-col-fixed" style="width: 100px">E-mail</label>
 						<div class="p-col">
 							<p:inputText id="email" value="#{userBean.user.email}" required="true" validatorMessage="E-mail inválido">
@@ -83,11 +68,6 @@
 		
 		            <p:column headerText="User">
 		                <h:outputText value="#{user.name}" />
-		            </p:column>
-		            <p:column headerText="Birthday">
-		                <h:outputText value="#{user.birthday}">
-		                	<f:convertDateTime dateStyle="short" locale="pt_BR" />
-		                </h:outputText>
 		            </p:column>
 		            <p:column headerText="E-mail">
 		                <h:outputText value="#{user.email}" />

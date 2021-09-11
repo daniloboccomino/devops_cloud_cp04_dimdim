@@ -12,20 +12,12 @@
 
 		<p:card class="card-form">
 			<f:facet name="title">
-	        Novo Boleto
+	        New
 	    </f:facet>
 			<h:form>
 				<div class="ui-fluid p-formgrid p-grid">
 					<div class="p-field p-grid">
-						<label for="createdDate" class="p-col-fixed" style="width: 100px">Data de Criação</label>
-						<div class="p-col">
-							<p:inputText id="createdDate" value="#{bankSlipBean.bankSlip.createdDate}" required="true">
-								<f:ajax event="blur" render="messages"  />
-							</p:inputText>
-						</div>
-					</div>
-					<div class="p-field p-grid">
-						<label for="dueDate" class="p-col-fixed" style="width: 100px">Data de Vencimento</label>
+						<label for="dueDate" class="p-col-fixed" style="width: 100px">Due Date</label>
 						<div class="p-col">
 							<p:inputText id="dueDate" value="#{bankSlipBean.bankSlip.dueDate}" required="true">
 								<f:ajax event="blur" render="messages"  />
@@ -33,7 +25,7 @@
 						</div>
 					</div>
 					<div class="p-field p-grid">
-						<label for="code" class="p-col-fixed" style="width: 100px">Description</label>
+						<label for="code" class="p-col-fixed" style="width: 100px">Barcode</label>
 						<div class="p-col">
 							<p:inputText id="code" value="#{bankSlipBean.bankSlip.code}">
 								<f:ajax event="blur" render="messages"  />
@@ -66,7 +58,7 @@
 		    <h:form id="form">
 		        <p:dataTable id="bankSlips" var="bankSlip" value="#{bankSlipBean.bankSlipsByUser}">
 		            <f:facet name="header">
-		                Meus Boletos Bancários
+		                My Bank Slips
 		            </f:facet>
 		
 		            <p:column headerText="Name">
